@@ -121,6 +121,7 @@ final class MahbubCompanion {
 			  'icon' =>'fa fa-image'
 			]);
 		}
+<<<<<<< HEAD
 		// custom elementor category
 		function add_elementor_widget_categories( $elements_manager ) {
 
@@ -141,6 +142,8 @@ final class MahbubCompanion {
 
 		}
 		add_action( 'elementor/elements/categories_registered', 'add_elementor_widget_categories' );
+=======
+>>>>>>> b4953397161e7cd2afd111ab3e8e51ba10e386ed
 
 	/**
 	 * Admin notice
