@@ -106,10 +106,41 @@ final class MahbubCompanion {
 			add_action( 'admin_notices', array( $this, 'admin_notice_minimum_php_version' ) );
 			return;
 		}
+		// register new category 
+		add_action("elementor/elements/categories_registered",[$this,'register_new_category']);
 
 		// Once we get here, We have passed all validation checks so we can safely include our plugin
 		require_once( 'plugin.php' );
 	}
+	// New Category 
+
+		public function register_new_category($manager)
+		{
+			$manager->add_category('mahbub',[
+			  'title'=>__('Mahbub','mahbub-companion'),
+			  'icon' =>'fa fa-image'
+			]);
+		}
+		// custom elementor category
+		function add_elementor_widget_categories( $elements_manager ) {
+
+			$elements_manager->add_category(
+				'first-category',
+				[
+					'title' => esc_html__( 'First Category', 'plugin-name' ),
+					'icon' => 'fa fa-plug',
+				]
+			);
+			$elements_manager->add_category(
+				'second-category',
+				[
+					'title' => esc_html__( 'Second Category', 'plugin-name' ),
+					'icon' => 'fa fa-plug',
+				]
+			);
+
+		}
+		add_action( 'elementor/elements/categories_registered', 'add_elementor_widget_categories' );
 
 	/**
 	 * Admin notice
