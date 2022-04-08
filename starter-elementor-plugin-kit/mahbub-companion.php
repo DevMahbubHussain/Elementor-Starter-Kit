@@ -106,10 +106,21 @@ final class MahbubCompanion {
 			add_action( 'admin_notices', array( $this, 'admin_notice_minimum_php_version' ) );
 			return;
 		}
+		// register new category 
+		add_action("elementor/elements/categories_registered",[$this,'register_new_category']);
 
 		// Once we get here, We have passed all validation checks so we can safely include our plugin
 		require_once( 'plugin.php' );
 	}
+	// New Category 
+
+		public function register_new_category($manager)
+		{
+			$manager->add_category('mahbub',[
+			  'title'=>__('Mahbub','mahbub-companion'),
+			  'icon' =>'fa fa-image'
+			]);
+		}
 
 	/**
 	 * Admin notice
